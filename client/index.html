@@ -5,107 +5,395 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        /* CSS Variables for easy color adjustments */
         :root {
-            --bg-main: #050505;
-            --text-main: #e2e8f0;
-            --cyber-blue: #0ea5e9;
-            --cyber-green: #10b981;
+            /* Vercel/Linear inspired dark theme */
+            --bg-base: #000000;
+            --bg-surface: #0a0a0a;
+            --bg-surface-hover: #171717;
+            --border-subtle: rgba(255, 255, 255, 0.1);
+            --border-glow: rgba(14, 165, 233, 0.3);
+            
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            
+            --accent-blue: #38bdf8;
+            --accent-purple: #818cf8;
+            --accent-green: #34d399;
+            
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
         }
-        body {
+
+        * {
+            box-sizing: border-box;
             margin: 0;
-            background-color: var(--bg-main);
-            background-image:
-                linear-gradient(rgba(14, 165, 233, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(14, 165, 233, 0.05) 1px, transparent 1px);
-            background-size: 30px 30px;
-            color: var(--text-main);
-            font-family: 'Fira Code', 'Courier New', Courier, monospace;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Ambient Glow & Faded Grid Background */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 100vh;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 32px 32px;
+            mask-image: radial-gradient(circle at center top, black 0%, transparent 70%);
+            -webkit-mask-image: radial-gradient(circle at center top, black 0%, transparent 70%);
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            top: -150px; left: 50%;
+            transform: translateX(-50%);
+            width: 600px; height: 400px;
+            background: radial-gradient(ellipse at center, rgba(56, 189, 248, 0.15), transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Navigation */
+        nav {
+            width: 100%;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-subtle);
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: fixed;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-weight: 600;
+            font-size: 1.125rem;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-dot {
+            width: 8px; height: 8px;
+            background: var(--accent-blue);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
-        }
-        .glass-card {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(14, 165, 233, 0.2);
-            border-radius: 12px;
-            padding: 3rem;
-            box-shadow: 0 0 20px rgba(14, 165, 233, 0.1);
-            max-width: 600px;
-            width: 90%;
+            padding: 8rem 2rem 4rem;
             text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            animation: fadeUp 1s ease-out forwards;
         }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 9999px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .status-badge:hover {
+            border-color: var(--border-glow);
+        }
+
+        .status-dot {
+            width: 6px; height: 6px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
         h1 {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            font-size: 3.5rem;
-            margin: 0 0 0.25rem 0;
-            background: linear-gradient(to right, var(--cyber-blue), var(--cyber-green));
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 600;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--text-primary) 30%, var(--text-secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: -1px;
+            background-clip: text;
         }
-        .subtitle {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            font-size: 1.2rem;
-            color: #94a3b8;
-            margin-bottom: 2.5rem;
-            letter-spacing: 1px;
+
+        .hero-desc {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 3rem;
         }
-        .terminal {
-            background: #000;
+
+        /* Buttons */
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 4rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
             border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--text-primary);
+            color: var(--bg-base);
+            border: 1px solid var(--text-primary);
+        }
+
+        .btn-primary:hover {
+            background: #e4e4e7;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--bg-surface);
+            color: var(--text-primary);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-surface-hover);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Premium Terminal Window */
+        .terminal-container {
+            width: 100%;
+            max-width: 700px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 
+                        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            background: #111;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .mac-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .mac-dots span {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+        }
+
+        .mac-dots .red { background: #ff5f56; }
+        .mac-dots .yellow { background: #ffbd2e; }
+        .mac-dots .green { background: #27c93f; }
+
+        .terminal-title {
+            margin: 0 auto;
+            transform: translateX(-15px); /* Offset to center visually against dots */
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        .terminal-body {
             padding: 1.5rem;
-            border-left: 4px solid var(--cyber-green);
-            font-size: 1rem;
-            line-height: 1.6;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
             text-align: left;
-            box-shadow: inset 0 0 10px rgba(16, 185, 129, 0.1);
+            color: var(--text-secondary);
         }
-        .prompt { color: var(--cyber-green); margin-right: 8px; font-weight: bold; }
-        .typing-1 { overflow: hidden; white-space: nowrap; animation: typing 1.5s steps(40, end); }
-        .typing-2 { overflow: hidden; white-space: nowrap; animation: typing 1.5s steps(40, end) 1.5s both; }
-        .cursor { 
-            display: inline-block; 
-            width: 8px; 
-            height: 15px; 
-            background: var(--cyber-green); 
-            animation: blink 1s step-end infinite; 
-            vertical-align: middle; 
-            margin-left: 4px;
+
+        .line {
+            display: flex;
+            margin-bottom: 0.5rem;
         }
-        @keyframes typing { from { width: 0 } to { width: 100% } }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-        .footer { 
-            position: fixed; 
-            bottom: 20px; 
-            font-family: 'Segoe UI', system-ui, sans-serif; 
-            font-size: 0.85rem; 
-            color: #475569; 
+
+        .path { color: var(--accent-blue); font-weight: 500; margin-right: 8px; }
+        .command { color: var(--text-primary); }
+        
+        /* Advanced Typing Animation */
+        .type-1, .type-2, .type-3 {
+            overflow: hidden;
+            white-space: nowrap;
+            width: 0;
         }
+
+        .type-1 { animation: typeLine 1s steps(40, end) forwards; }
+        .type-2 { animation: typeLine 0.5s steps(40, end) 1.2s forwards; }
+        .type-3 { animation: typeLine 1.5s steps(40, end) 1.9s forwards; }
+
+        .output {
+            color: var(--accent-green);
+            opacity: 0;
+            animation: fadeIn 0.1s 1.7s forwards;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background: var(--text-primary);
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+            margin-left: 2px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-subtle);
+            margin-top: auto;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes typeLine {
+            to { width: 100%; }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.4); }
+            70% { box-shadow: 0 0 0 4px rgba(52, 211, 153, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+        }
+
+        /* Responsive */
         @media (max-width: 600px) {
-            h1 { font-size: 2.5rem; }
-            .glass-card { padding: 2rem 1.5rem; }
-            .terminal { font-size: 0.85rem; }
+            .cta-group { flex-direction: column; width: 100%; }
+            .btn { width: 100%; text-align: center; }
+            .terminal-body { font-size: 0.8rem; overflow-x: auto; }
+            .hero { padding-top: 6rem; }
         }
     </style>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-    
-    <div class="glass-card">
-        <h1>Basant Koiri</h1>
-        <div class="subtitle">BIT Student | Cybersecurity</div>
-        
-        <div class="terminal">
-            <div class="typing-1"><span class="prompt">root@basantkoiri:~$</span> establish_connection -p 443</div>
-            <div class="typing-2"><span class="prompt">[OK]</span> Loading wonderful projects...<span class="cursor"></span></div>
+    <nav>
+        <div class="logo">
+            <span class="logo-dot"></span>
+            Basant Koiri
         </div>
-    </div>
-    <div class="footer">&copy; 2026 basantkoiri.com.np. Secured Node.</div>
+    </nav>
+
+    <main class="hero">
+        <div class="status-badge">
+            <span class="status-dot"></span>
+            BIT Student & Security Researcher
+        </div>
+        
+        <h1>
+            <span class="gradient-text">Engineering secure,</span><br>
+            resilient digital systems.
+        </h1>
+        
+        <p class="hero-desc">
+            I specialize in cybersecurity, threat analysis, and building high-performance architectures that withstand modern vulnerabilities.
+        </p>
+
+        <div class="cta-group">
+            <a href="#" class="btn btn-primary">View Projects</a>
+            <a href="#" class="btn btn-secondary">Contact Me</a>
+        </div>
+
+        <div class="terminal-container">
+            <div class="terminal-header">
+                <div class="mac-dots">
+                    <span class="red"></span>
+                    <span class="yellow"></span>
+                    <span class="green"></span>
+                </div>
+                <div class="terminal-title">user@basantkoiri: ~</div>
+            </div>
+            <div class="terminal-body">
+                <div class="line type-1">
+                    <span class="path">~/basant$</span>
+                    <span class="command">./init_connection --secure -p 443</span>
+                </div>
+                <div class="line">
+                    <span class="output">[OK] Handshake established. Verifying certificates...</span>
+                </div>
+                <div class="line type-2">
+                    <span class="path">~/basant$</span>
+                    <span class="command">load_profile --user "b_koiri"</span>
+                </div>
+                <div class="line type-3">
+                    <span class="path">~/basant$</span>
+                    <span class="command">echo "Ready to build secure environments."<span class="cursor"></span></span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 basantkoiri.com.np. Connection 256-bit Encrypted.
+    </footer>
   </body>
 </html>
