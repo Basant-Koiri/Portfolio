@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Basant Koiri</title>
+    
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Vercel/Linear inspired dark theme */
+            --bg-base: #000000;
+            --bg-surface: #0a0a0a;
+            --bg-surface-hover: #171717;
+            --bg-editor: #0d0d0d;
+            --border-subtle: rgba(255, 255, 255, 0.1);
+            --border-glow: rgba(56, 189, 248, 0.3);
+            
+            /* Syntax Highlighting Colors */
+            --text-primary: #ffffff;
+            --text-secondary: #8b949e;
+            --syntax-keyword: #ff7b72;
+            --syntax-variable: #79c0ff;
+            --syntax-string: #a5d6ff;
+            --syntax-punctuation: #c9d1d9;
+            --syntax-comment: #8b949e;
+            
+            --accent-blue: #38bdf8;
+            --accent-green: #34d399;
+            
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Ambient Glow & Faded Grid Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 32px 32px;
+            mask-image: radial-gradient(circle at center 30%, black 0%, transparent 80%);
+            -webkit-mask-image: radial-gradient(circle at center 30%, black 0%, transparent 80%);
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        /* Navigation */
+        nav {
+            width: 100%;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-subtle);
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-weight: 600;
+            font-size: 1.125rem;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .logo-dot {
+            width: 8px; height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-green);
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Main Content Grid */
+        .contact-container {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            width: 100%;
+            animation: fadeUp 0.8s ease-out forwards;
+        }
+
+        /* Left Column: Developer Info */
+        .dev-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-header h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: -0.04em;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .system-stats {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+        }
+
+        .stat-line {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            border-bottom: 1px dashed var(--border-subtle);
+            padding-bottom: 0.25rem;
+        }
+
+        .stat-line:last-child {
+            margin-bottom: 0; border-bottom: none; padding-bottom: 0;
+        }
+
+        .stat-key { color: var(--text-secondary); }
+        .stat-val { color: var(--accent-blue); text-decoration: none; }
+        .stat-val:hover { text-decoration: underline; }
+
+        /* Right Column: IDE Form */
+        .ide-container {
+            background: var(--bg-editor);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 
+                        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+        }
+
+        .ide-header {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            background: #111;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .file-tabs {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .tab {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tab.active {
+            color: var(--text-primary);
+        }
+
+        .ide-body {
+            display: flex;
+            padding: 1rem 0;
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+        }
+
+        .line-numbers {
+            padding: 0 1rem;
+            text-align: right;
+            color: #484f58;
+            user-select: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        form.code-form {
+            flex: 1;
+            padding-right: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .code-line {
+            display: flex;
+            align-items: baseline;
+            white-space: pre-wrap;
+        }
+
+        .indent { padding-left: 2rem; }
+        
+        /* Syntax Colors */
+        .kwd { color: var(--syntax-keyword); }
+        .var { color: var(--syntax-variable); }
+        .str { color: var(--syntax-string); }
+        .punc { color: var(--syntax-punctuation); }
+        .cmt { color: var(--syntax-comment); font-style: italic; }
+
+        /* Inputs styled as code */
+        input, textarea {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid transparent;
+            color: var(--syntax-string);
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            width: 100%;
+            outline: none;
+            padding: 0 4px;
+            transition: border-color 0.2s;
+            resize: none;
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: rgba(165, 214, 255, 0.3); /* Faded string color */
+        }
+
+        input:focus, textarea:focus {
+            border-bottom: 1px solid var(--accent-blue);
+            background: rgba(56, 189, 248, 0.05);
+        }
+
+        .input-wrapper {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            position: relative;
+        }
+
+        .input-wrapper::before, .input-wrapper::after {
+            content: '"';
+            color: var(--syntax-string);
+        }
+
+        /* TextArea needs special handling for quotes */
+        .textarea-wrapper {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        .textarea-wrapper::before { content: '`'; color: var(--syntax-string); }
+        .textarea-wrapper::after { content: '`,'; color: var(--syntax-string); margin-top: -5px; }
+
+        textarea {
+            height: 100px;
+            margin-left: 1rem;
+            width: calc(100% - 1rem);
+        }
+
+        /* Submit Button */
+        .execute-btn {
+            background: transparent;
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            padding: 0.5rem 1rem;
+            margin-top: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .execute-btn:hover {
+            background: var(--bg-surface-hover);
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+            box-shadow: 0 0 15px rgba(52, 211, 153, 0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 850px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem 1rem;
+            }
+            .ide-body { font-size: 0.85rem; }
+            input, textarea { font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">
+            <span class="logo-dot"></span>
+            Basant Koiri
+        </a>
+        <div class="nav-links">
+            <a href="index.html">cd ../home</a>
+        </div>
+    </nav>
+
+    <main class="contact-container">
+        
+        <!-- Left Sidebar: Developer Identity -->
+        <aside class="dev-info">
+            <div class="info-header">
+                <h1>Initiate Handshake</h1>
+                <p>Looking to collaborate, discuss security architectures, or just talk tech? Drop a payload.</p>
+            </div>
+
+            <div class="system-stats">
+                <div class="stat-line">
+                    <span class="stat-key">STATUS</span>
+                    <span class="stat-val" style="color: var(--accent-green)">AWAITING_CONNECTIONS</span>
+                </div>
+                <div class="stat-line">
+                    <span class="stat-key">LOCATION</span>
+                    <span class="stat-val">Bagmati Province, NP</span>
+                </div>
+                <div class="stat-line">
+                    <span class="stat-key">EMAIL</span>
+                    <a href="mailto:hello@basantkoiri.com.np" class="stat-val">hello@basantkoiri.com.np</a>
+                </div>
+                <div class="stat-line">
+                    <span class="stat-key">GITHUB</span>
+                    <a href="#" class="stat-val">github.com/basantkoiri</a>
+                </div>
+                <div class="stat-line">
+                    <span class="stat-key">PGP_FINGERPRINT</span>
+                    <span class="stat-val" style="color: var(--text-secondary)">0x8F92...E4A1</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Right Sidebar: The IDE Form -->
+        <section class="ide-container">
+            <div class="ide-header">
+                <div class="file-tabs">
+                    <div class="tab active">
+                        <svg width="14" height="14" viewBox="0 0 16 16" fill="var(--accent-blue)"><path d="M4 1.5H3a2 2 0 00-2 2V14a2 2 0 002 2h10a2 2 0 002-2V3.5a2 2 0 00-2-2h-1v1h1a1 1 0 011 1V14a1 1 0 01-1 1H3a1 1 0 01-1-1V3.5a1 1 0 011-1h1v-1z"/><path d="M5.5 2.5h5V1h-5v1.5z"/></svg>
+                        send_message.ts
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ide-body">
+                <!-- Static Line Numbers -->
+                <div class="line-numbers">
+                    <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span>
+                </div>
+                
+                <!-- The Actual HTML Form masquerading as code -->
+                <form class="code-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Payload successfully deployed! (Connect this to Formspree or your backend)');">
+                    
+                    <div class="code-line">
+                        <span class="cmt">// Define the communication payload</span>
+                    </div>
+                    
+                    <div class="code-line">
+                        <span class="kwd">const</span>&nbsp;<span class="var">payload</span>&nbsp;<span class="punc">=</span>&nbsp;<span class="punc">{</span>
+                    </div>
+
+                    <div class="code-line indent">
+                        <label for="name" class="var">senderName</label><span class="punc">:&nbsp;</span>
+                        <div class="input-wrapper">
+                            <input type="text" id="name" name="name" placeholder="John Doe" required>
+                        </div><span class="punc">,</span>
+                    </div>
+
+                    <div class="code-line indent">
+                        <label for="email" class="var">replyEmail</label><span class="punc">:&nbsp;</span>
+                        <div class="input-wrapper">
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                        </div><span class="punc">,</span>
+                    </div>
+
+                    <div class="code-line indent">
+                        <label for="message" class="var">messageBody</label><span class="punc">:&nbsp;</span>
+                        <div class="textarea-wrapper">
+                            <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="code-line">
+                        <span class="punc">};</span>
+                    </div>
+                    <div class="code-line"><br></div>
+
+                    <div class="code-line">
+                        <span class="kwd">await</span>&nbsp;<span class="var">Network</span><span class="punc">.</span><span class="var">transmit</span><span class="punc">(</span><span class="var">payload</span><span class="punc">);</span>
+                    </div>
+
+                    <div class="code-line">
+                        <button type="submit" class="execute-btn">
+                            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M11.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/></svg>
+                            Run script
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
