@@ -8,102 +8,88 @@
     <style>
         /* CSS Variables for easy color adjustments */
         :root {
-            --bg-color: #0f172a;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent-start: #38bdf8;
-            --accent-end: #818cf8;
+            --bg-main: #050505;
+            --text-main: #e2e8f0;
+            --cyber-blue: #0ea5e9;
+            --cyber-green: #10b981;
         }
-
-        /* Base Reset and Body Styling */
         body {
             margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-color);
+            background-color: var(--bg-main);
+            background-image:
+                linear-gradient(rgba(14, 165, 233, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(14, 165, 233, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
             color: var(--text-main);
+            font-family: 'Fira Code', 'Courier New', Courier, monospace;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
+        }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.1);
+            max-width: 600px;
+            width: 90%;
             text-align: center;
-            overflow: hidden;
-            background-image: 
-                radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.05), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(129, 140, 248, 0.05), transparent 25%);
         }
-
-        /* Container for Main Content */
-        .container {
-            z-index: 10;
-            padding: 2rem;
-            animation: fadeIn 1.5s ease-in-out;
-        }
-
-        /* Typography */
         h1 {
+            font-family: 'Segoe UI', system-ui, sans-serif;
             font-size: 3.5rem;
-            margin-bottom: 0.5rem;
-            letter-spacing: 2px;
-            background: linear-gradient(to right, var(--accent-start), var(--accent-end));
+            margin: 0 0 0.25rem 0;
+            background: linear-gradient(to right, var(--cyber-blue), var(--cyber-green));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
         }
-
-        p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
+        .subtitle {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-size: 1.2rem;
+            color: #94a3b8;
             margin-bottom: 2.5rem;
             letter-spacing: 1px;
-            font-weight: 300;
         }
-
-        /* Animated Loader */
-        .loader {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 3rem;
+        .terminal {
+            background: #000;
+            border-radius: 6px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--cyber-green);
+            font-size: 1rem;
+            line-height: 1.6;
+            text-align: left;
+            box-shadow: inset 0 0 10px rgba(16, 185, 129, 0.1);
         }
-
-        .dot {
-            width: 16px;
-            height: 16px;
-            background: linear-gradient(to bottom right, var(--accent-start), var(--accent-end));
-            border-radius: 50%;
-            animation: bounce 1.5s infinite ease-in-out both;
-            box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+        .prompt { color: var(--cyber-green); margin-right: 8px; font-weight: bold; }
+        .typing-1 { overflow: hidden; white-space: nowrap; animation: typing 1.5s steps(40, end); }
+        .typing-2 { overflow: hidden; white-space: nowrap; animation: typing 1.5s steps(40, end) 1.5s both; }
+        .cursor { 
+            display: inline-block; 
+            width: 8px; 
+            height: 15px; 
+            background: var(--cyber-green); 
+            animation: blink 1s step-end infinite; 
+            vertical-align: middle; 
+            margin-left: 4px;
         }
-
-        .dot:nth-child(1) { animation-delay: -0.30s; }
-        .dot:nth-child(2) { animation-delay: -0.15s; }
-
-        /* Animations */
-        @keyframes bounce {
-            0%, 80%, 100% { transform: scale(0); opacity: 0.3; }
-            40% { transform: scale(1); opacity: 1; }
+        @keyframes typing { from { width: 0 } to { width: 100% } }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .footer { 
+            position: fixed; 
+            bottom: 20px; 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+            font-size: 0.85rem; 
+            color: #475569; 
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Footer */
-        .footer {
-            position: absolute;
-            bottom: 24px;
-            font-size: 0.9rem;
-            color: #475569;
-            letter-spacing: 0.5px;
-        }
-
-        /* Mobile Responsiveness */
         @media (max-width: 600px) {
             h1 { font-size: 2.5rem; }
-            p { font-size: 1.1rem; }
+            .glass-card { padding: 2rem 1.5rem; }
+            .terminal { font-size: 0.85rem; }
         }
     </style>
   </head>
@@ -111,19 +97,15 @@
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     
-    <div class="container">
+    <div class="glass-card">
         <h1>Basant Koiri</h1>
-        <p>Wonderful projects are loading...</p>
+        <div class="subtitle">BIT Student | Cybersecurity</div>
         
-        <div class="loader">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
+        <div class="terminal">
+            <div class="typing-1"><span class="prompt">root@basantkoiri:~$</span> establish_connection -p 443</div>
+            <div class="typing-2"><span class="prompt">[OK]</span> Loading wonderful projects...<span class="cursor"></span></div>
         </div>
     </div>
-
-    <div class="footer">
-        &copy; 2026 basantkoiri.com.np. All rights reserved.
-    </div>
+    <div class="footer">&copy; 2026 basantkoiri.com.np. Secured Node.</div>
   </body>
 </html>
