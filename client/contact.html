@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Basant Koiri</title>
+    <meta name="description" content="Get in touch with Basant Koiri for web development projects and opportunities.">
     
-    <!-- Premium Fonts: Inter (UI) & JetBrains Mono (Code) -->
+    <!-- Premium Fonts: Inter Only (Removed monospace for a cleaner, non-technical vibe) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -22,19 +23,11 @@
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
                     },
                     colors: {
                         gray: {
                             900: '#111111',
                             800: '#1a1a1a',
-                        },
-                        syntax: {
-                            keyword: '#ff7b72',
-                            variable: '#79c0ff',
-                            string: '#a5d6ff',
-                            punctuation: '#c9d1d9',
-                            comment: '#8b949e',
                         }
                     },
                     animation: {
@@ -51,42 +44,25 @@
         }
     </script>
     <style>
-        /* Unified Ambient Background */
+        /* Premium SaaS Background Grid */
         .bg-grid {
             background-size: 40px 40px;
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
             mask-image: radial-gradient(circle at center 30%, black 10%, transparent 80%);
             -webkit-mask-image: radial-gradient(circle at center 30%, black 10%, transparent 80%);
         }
         
         .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
         
-        /* IDE Specific Styles */
-        .ide-input {
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid transparent;
-            color: theme('colors.syntax.string');
-            outline: none;
-            transition: all 0.2s ease;
+        /* Smooth Input Transitions */
+        .glass-input {
+            transition: all 0.2s ease-in-out;
         }
-        .ide-input::placeholder { color: rgba(165, 214, 255, 0.3); }
-        .ide-input:focus {
-            border-bottom-color: theme('colors.syntax.variable');
-            background: rgba(121, 192, 255, 0.05);
+        .glass-input:focus {
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
         }
-        
-        /* Wrapping quotes for inputs to mimic strings */
-        .string-wrap::before { content: '"'; color: theme('colors.syntax.string'); }
-        .string-wrap::after { content: '"'; color: theme('colors.syntax.string'); }
-        .textarea-wrap::before { content: '`'; color: theme('colors.syntax.string'); }
-        .textarea-wrap::after { content: '`'; color: theme('colors.syntax.string'); }
-        
-        /* Custom Scrollbar for IDE */
-        .ide-body::-webkit-scrollbar { width: 8px; }
-        .ide-body::-webkit-scrollbar-track { background: transparent; }
-        .ide-body::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 4px; }
     </style>
 </head>
 <body class="bg-black text-gray-300 font-sans antialiased selection:bg-white selection:text-black min-h-screen flex flex-col relative overflow-x-hidden">
@@ -97,149 +73,140 @@
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 bg-black/50 backdrop-blur-md border-b border-white/10">
         <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-            <a href="index.html" class="text-white font-semibold tracking-tight text-lg flex items-center gap-2 hover:opacity-80 transition-opacity">
-                <span class="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_#22c55e]"></span>
+            <a href="index.html" class="text-white font-semibold tracking-tight text-lg hover:opacity-80 transition-opacity">
                 Basant Koiri
             </a>
-            <a href="index.html" class="flex items-center gap-2 text-sm font-mono text-gray-400 hover:text-white transition-colors bg-white/5 px-3 py-1.5 rounded-md border border-white/10">
-                <i class="ph ph-arrow-left"></i>
-                cd ../home
+            <a href="index.html" class="flex items-center gap-2 text-sm font-medium text-gray-400 hover:text-white transition-colors">
+                <i class="ph ph-arrow-left text-lg"></i>
+                Back to Home
             </a>
         </div>
     </nav>
 
     <!-- Main Content -->
-    <main class="relative z-10 flex-1 max-w-6xl mx-auto w-full px-6 pt-32 pb-20 flex flex-col lg:flex-row gap-12 lg:gap-8 items-start">
+    <main class="relative z-10 flex-1 max-w-6xl mx-auto w-full px-6 pt-32 pb-20 flex flex-col lg:flex-row gap-16 lg:gap-12 items-start">
         
-        <!-- Left Sidebar: Developer Identity -->
+        <!-- Left Column: Friendly, Professional Branding -->
         <aside class="w-full lg:w-5/12 flex flex-col gap-8 opacity-0 animate-fade-in-up">
             <div>
-                <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-white mb-3">Initiate Handshake.</h1>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-gray-400 mb-6">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    Accepting New Projects
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">Let's build something exceptional.</h1>
                 <p class="text-lg text-gray-400 leading-relaxed">
-                    Looking to collaborate, discuss web architecture, or build something scalable? Drop a payload.
+                    Whether you have a clear vision or need technical guidance to figure out the next steps, I'm here to help translate your goals into a high-performance web application.
                 </p>
             </div>
 
-            <div class="bg-white/[0.02] border border-white/10 rounded-2xl p-6 font-mono text-sm shadow-xl backdrop-blur-sm">
-                <div class="flex flex-col gap-4">
-                    <div class="flex items-center justify-between border-b border-white/5 pb-4">
-                        <span class="text-syntax-comment flex items-center gap-2">
-                            <i class="ph ph-activity text-lg"></i> STATUS
-                        </span>
-                        <span class="text-green-400 flex items-center gap-2">
-                            <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span></span>
-                            AWAITING_CONNECTIONS
-                        </span>
+            <div class="flex flex-col gap-6 mt-4">
+                <!-- Direct Contact Details -->
+                <div class="flex items-start gap-4">
+                    <div class="p-3 rounded-xl bg-white/5 border border-white/10 text-white">
+                        <i class="ph ph-envelope-simple text-xl"></i>
                     </div>
-                    <div class="flex items-center justify-between border-b border-white/5 pb-4">
-                        <span class="text-syntax-comment flex items-center gap-2">
-                            <i class="ph ph-map-pin text-lg"></i> LOCATION
-                        </span>
-                        <span class="text-white">Khairahani, Bagmati, NP</span>
+                    <div>
+                        <h3 class="text-white font-medium mb-1">Email me directly</h3>
+                        <a href="mailto:hello@basantkoiri.com.np" class="text-gray-400 hover:text-white transition-colors">hello@basantkoiri.com.np</a>
                     </div>
-                    <div class="flex items-center justify-between border-b border-white/5 pb-4">
-                        <span class="text-syntax-comment flex items-center gap-2">
-                            <i class="ph ph-envelope-simple text-lg"></i> EMAIL
-                        </span>
-                        <a href="mailto:hello@basantkoiri.com.np" class="text-syntax-variable hover:underline transition-all">hello@basantkoiri.com.np</a>
+                </div>
+
+                <div class="flex items-start gap-4">
+                    <div class="p-3 rounded-xl bg-white/5 border border-white/10 text-white">
+                        <i class="ph ph-map-pin text-xl"></i>
                     </div>
-                    <div class="flex items-center justify-between">
-                        <span class="text-syntax-comment flex items-center gap-2">
-                            <i class="ph ph-github-logo text-lg"></i> GITHUB
-                        </span>
-                        <a href="https://github.com/basantkoiri" target="_blank" rel="noopener noreferrer" class="text-syntax-variable hover:underline transition-all">github.com/basantkoiri</a>
+                    <div>
+                        <h3 class="text-white font-medium mb-1">Based in</h3>
+                        <p class="text-gray-400">Khairahani, Bagmati, Nepal<br><span class="text-sm">Available for remote work worldwide</span></p>
                     </div>
                 </div>
             </div>
         </aside>
 
-        <!-- Right Sidebar: The IDE Form -->
-        <section class="w-full lg:w-7/12 bg-[#0d0d0d] border border-white/10 rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.6)] opacity-0 animate-fade-in-up delay-100 relative">
-            
-            <!-- Window Chrome / Header -->
-            <div class="bg-[#111] border-b border-white/10 px-4 py-3 flex items-center justify-between select-none">
-                <div class="flex items-center gap-2">
-                    <div class="w-3 h-3 rounded-full bg-red-500 border border-red-600"></div>
-                    <div class="w-3 h-3 rounded-full bg-yellow-500 border border-yellow-600"></div>
-                    <div class="w-3 h-3 rounded-full bg-green-500 border border-green-600"></div>
-                </div>
-                <div class="flex items-center gap-2 font-mono text-xs text-gray-400 bg-black/50 px-3 py-1 rounded-md border border-white/5">
-                    <i class="ph ph-file-ts text-syntax-variable text-sm"></i> send_message.ts
-                </div>
-                <div class="w-12"></div> <!-- Spacer for center alignment -->
-            </div>
-            
-            <!-- IDE Body -->
-            <div class="flex w-full font-mono text-sm py-4 overflow-x-auto ide-body">
+        <!-- Right Column: User-Friendly Contact Form -->
+        <section class="w-full lg:w-7/12 opacity-0 animate-fade-in-up delay-100">
+            <div class="bg-white/[0.02] backdrop-blur-md border border-white/10 rounded-3xl p-8 shadow-2xl">
                 
-                <!-- Line Numbers -->
-                <div class="flex flex-col text-right px-4 text-[#484f58] select-none leading-8 border-r border-white/5 min-w-[3rem]">
-                    <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span>
-                </div>
-                
-                <!-- Code Form -->
-                <form class="flex-1 px-4 leading-8" action="#" method="POST" onsubmit="event.preventDefault(); alert('Payload successfully deployed! (Connect this to Formspree or your backend)');">
+                <!-- Reminder: Update action="" with Formspree or Web3Forms link -->
+                <form action="#" method="POST" class="flex flex-col gap-6">
                     
-                    <div class="text-syntax-comment italic whitespace-nowrap">// Define the communication payload</div>
-                    
-                    <div>
-                        <span class="text-syntax-keyword">const</span> 
-                        <span class="text-syntax-variable">payload</span> 
-                        <span class="text-syntax-punctuation">=</span> 
-                        <span class="text-syntax-punctuation">{</span>
-                    </div>
-
-                    <div class="pl-8 flex items-center whitespace-nowrap">
-                        <label for="name" class="text-syntax-variable cursor-text">senderName</label>
-                        <span class="text-syntax-punctuation mr-2">:</span>
-                        <span class="string-wrap flex-1 flex">
-                            <input type="text" id="name" name="name" placeholder="John Doe" required class="ide-input w-full px-1">
-                        </span>
-                        <span class="text-syntax-punctuation">,</span>
-                    </div>
-
-                    <div class="pl-8 flex items-center whitespace-nowrap">
-                        <label for="email" class="text-syntax-variable cursor-text">replyEmail</label>
-                        <span class="text-syntax-punctuation mr-2">:</span>
-                        <span class="string-wrap flex-1 flex">
-                            <input type="email" id="email" name="email" placeholder="john@example.com" required class="ide-input w-full px-1">
-                        </span>
-                        <span class="text-syntax-punctuation">,</span>
-                    </div>
-
-                    <div class="pl-8 flex flex-col">
-                        <div class="flex">
-                            <label for="message" class="text-syntax-variable cursor-text">messageBody</label>
-                            <span class="text-syntax-punctuation mr-2">:</span>
-                            <span class="text-syntax-string">`</span>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Name Field -->
+                        <div class="flex flex-col gap-2">
+                            <label for="name" class="text-sm font-medium text-gray-300">Your Name</label>
+                            <input 
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                placeholder="Jane Doe" 
+                                required 
+                                class="glass-input w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:border-white/30 focus:bg-white/5"
+                            >
                         </div>
-                        <div class="pl-4 w-full flex pr-4">
-                            <textarea id="message" name="message" placeholder="Type your message here..." required class="ide-input w-full h-24 py-1 resize-none leading-relaxed"></textarea>
-                        </div>
-                        <div class="flex -mt-2">
-                            <span class="text-syntax-string">`</span><span class="text-syntax-punctuation">,</span>
+
+                        <!-- Email Field -->
+                        <div class="flex flex-col gap-2">
+                            <label for="email" class="text-sm font-medium text-gray-300">Email Address</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                placeholder="jane@company.com" 
+                                required 
+                                class="glass-input w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:border-white/30 focus:bg-white/5"
+                            >
                         </div>
                     </div>
 
-                    <div><span class="text-syntax-punctuation">};</span></div>
+                    <!-- Project Type (Optional but helpful for client routing) -->
+                    <div class="flex flex-col gap-2">
+                        <label for="subject" class="text-sm font-medium text-gray-300">What are you looking for?</label>
+                        <select 
+                            id="subject" 
+                            name="subject" 
+                            class="glass-input w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-white/30 focus:bg-white/5 appearance-none"
+                        >
+                            <option value="new_project" class="bg-gray-900">New Website / Web App</option>
+                            <option value="redesign" class="bg-gray-900">Redesign Existing Site</option>
+                            <option value="freelance" class="bg-gray-900">Freelance Contract</option>
+                            <option value="other" class="bg-gray-900">Just saying hello</option>
+                        </select>
+                    </div>
+
+                    <!-- Message Field -->
+                    <div class="flex flex-col gap-2">
+                        <label for="message" class="text-sm font-medium text-gray-300">Project Details</label>
+                        <textarea 
+                            id="message" 
+                            name="message" 
+                            placeholder="Tell me a bit about your project, timeline, and goals..." 
+                            rows="5" 
+                            required 
+                            class="glass-input w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:border-white/30 focus:bg-white/5 resize-none"
+                        ></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button 
+                        type="submit" 
+                        class="mt-2 w-full flex items-center justify-center gap-2 bg-white text-black font-semibold rounded-xl px-6 py-4 hover:bg-gray-200 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_20px_rgba(255,255,255,0.1)]"
+                    >
+                        Send Message
+                        <i class="ph-bold ph-paper-plane-tilt"></i>
+                    </button>
                     
-                    <div class="h-8"></div> <!-- Empty line 10 -->
-
-                    <div class="whitespace-nowrap">
-                        <span class="text-syntax-keyword">await</span> 
-                        <span class="text-syntax-variable">Network</span><span class="text-syntax-punctuation">.</span><span class="text-syntax-variable">transmit</span><span class="text-syntax-punctuation">(</span><span class="text-white">payload</span><span class="text-syntax-punctuation">);</span>
-                    </div>
-
-                    <div class="mt-4">
-                        <button type="submit" class="group flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-sans text-sm font-medium px-4 py-2 rounded-md transition-all active:scale-95">
-                            <i class="ph-fill ph-play text-green-400 group-hover:text-green-300 transition-colors"></i>
-                            Execute Script
-                        </button>
-                    </div>
+                    <p class="text-center text-xs text-gray-500 mt-2">
+                        I usually respond within 24-48 hours.
+                    </p>
 
                 </form>
             </div>
         </section>
+
     </main>
 
 </body>
