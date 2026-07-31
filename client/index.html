@@ -1,243 +1,234 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basant Koiri | Web Developer</title>
-    <meta name="description" content="Portfolio of Basant Koiri, a professional Web Developer specializing in scalable, modern web applications.">
+    <title>Basant Koiri | Advanced Web Engineer</title>
+    <meta name="description" content="Portfolio of Basant Koiri, a professional Web Developer specializing in scalable MERN applications and algorithmic problem solving.">
+    
+    <!-- Link to the custom CSS file -->
+    <link rel="stylesheet" href="style.css">
     
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Phosphor Icons -->
+    <!-- Phosphor Icons (Lightweight SVG Icons) -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        gray: {
-                            900: '#111111',
-                            800: '#1a1a1a',
-                        }
-                    },
-                    animation: {
-                        'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                    },
-                    keyframes: {
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        /* Custom Background Grid for Premium SaaS feel */
-        .bg-grid {
-            background-size: 40px 40px;
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-            mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
-            -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
-        }
-        
-        .delay-100 { animation-delay: 100ms; }
-        .delay-200 { animation-delay: 200ms; }
-        .delay-300 { animation-delay: 300ms; }
-    </style>
 </head>
-<body class="bg-black text-gray-300 font-sans antialiased selection:bg-white selection:text-black">
+<body>
+
+    <!-- Ambient Grid Background -->
+    <div class="ambient-background"></div>
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-black/50 backdrop-blur-md border-b border-white/10">
-        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-            <a href="https://basantkoiri.com.np" class="text-white font-semibold tracking-tight text-lg hover:opacity-80 transition-opacity">
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="brand">
+                <span class="status-dot"></span>
                 Basant Koiri
             </a>
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
-                <a href="#work" class="text-gray-400 hover:text-white transition-colors">Work</a>
-                <a href="#expertise" class="text-gray-400 hover:text-white transition-colors">Expertise</a>
-                <a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a>
+            <div class="nav-links">
+                <a href="#expertise">Expertise</a>
+                <a href="#work">Work</a>
+                <a href="#contact">Contact</a>
             </div>
-            <a href="#contact" class="hidden md:inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-black bg-white rounded-full hover:bg-gray-200 transition-colors">
-                Hire Me
-            </a>
-            <!-- Mobile Menu Icon (Simplified for brevity) -->
-            <button class="md:hidden text-gray-400 hover:text-white">
-                <i class="ph ph-list text-2xl"></i>
-            </button>
+            <a href="#contact" class="btn btn-primary">Hire Me</a>
         </div>
     </nav>
 
     <main>
         <!-- Hero Section -->
-        <section class="relative pt-40 pb-20 md:pt-52 md:pb-32 px-6 overflow-hidden">
-            <div class="absolute inset-0 bg-grid z-0"></div>
-            
-            <div class="max-w-4xl mx-auto text-center relative z-10">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm text-gray-400 mb-8 opacity-0 animate-fade-in-up">
-                    <span class="relative flex h-2 w-2">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                    </span>
-                    Available for work • Based in Bhairahawa, Nepal
+        <section id="hero" class="hero container">
+            <div class="availability-badge">
+                <span class="status-dot"></span>
+                Accepting New Projects • Based in Nepal
+            </div>
+            <h1 class="hero-title">Engineering digital<br>experiences with precision.</h1>
+            <p class="hero-subtitle">
+                I am a full-stack developer specializing in the MERN stack and data-driven algorithms. I bridge the gap between complex engineering and elegant, high-conversion design.
+            </p>
+            <div class="hero-ctas">
+                <a href="#work" class="btn btn-primary">
+                    View Selected Work
+                </a>
+                <a href="https://github.com/basantkoiri" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                    <i class="ph ph-github-logo"></i> GitHub
+                </a>
+            </div>
+        </section>
+
+        <!-- Expertise Section -->
+        <section id="expertise" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Technical Arsenal.</h2>
+                    <p class="section-subtitle">Trained in rigorous computer science fundamentals and modern web architecture to build scalable, high-performance applications.</p>
                 </div>
-                
-                <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500 mb-6 opacity-0 animate-fade-in-up delay-100">
-                    Engineering the web,<br/> pixel by pixel.
-                </h1>
-                
-                <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 opacity-0 animate-fade-in-up delay-200 leading-relaxed">
-                    Hi, I'm Basant Koiri. I build high-performance, scalable, and visually compelling digital experiences that bridge the gap between complex engineering and elegant design.
-                </p>
-                
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-fade-in-up delay-300">
-                    <a href="#work" class="w-full sm:w-auto px-8 py-3 bg-white text-black font-medium rounded-full hover:bg-gray-200 transition-colors flex items-center justify-center gap-2">
-                        Explore my work
-                    </a>
-                    <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-3 bg-white/5 text-white font-medium rounded-full border border-white/10 hover:bg-white/10 transition-colors flex items-center justify-center gap-2">
-                        <i class="ph ph-github-logo text-xl"></i> GitHub
-                    </a>
+
+                <div class="bento-grid">
+                    <!-- Frontend Architecture -->
+                    <div class="bento-card">
+                        <div class="bento-icon"><i class="ph ph-browsers"></i></div>
+                        <h3>Frontend Architecture</h3>
+                        <p>Building responsive, accessible, and highly interactive user interfaces.</p>
+                        <ul class="skill-list">
+                            <li><i class="ph-fill ph-check-circle icon-green"></i> React & Modern UI frameworks</li>
+                            <li><i class="ph-fill ph-check-circle icon-green"></i> Advanced CSS & Styling Architecture</li>
+                            <li><i class="ph-fill ph-check-circle icon-green"></i> Deep JavaScript (DOM, Closures)</li>
+                            <li><i class="ph-fill ph-check-circle icon-green"></i> Async/Await & Event Loops</li>
+                        </ul>
+                    </div>
+
+                    <!-- Backend Engineering -->
+                    <div class="bento-card">
+                        <div class="bento-icon"><i class="ph ph-hard-drives"></i></div>
+                        <h3>Backend Engineering</h3>
+                        <p>Designing secure, scalable server-side systems and resilient APIs.</p>
+                        <ul class="skill-list">
+                            <li><i class="ph-fill ph-check-circle icon-blue"></i> Node.js & Express</li>
+                            <li><i class="ph-fill ph-check-circle icon-blue"></i> MVC Architecture Design</li>
+                            <li><i class="ph-fill ph-check-circle icon-blue"></i> MongoDB & Mongoose ORM</li>
+                            <li><i class="ph-fill ph-check-circle icon-blue"></i> Relational SQL Databases</li>
+                        </ul>
+                    </div>
+
+                    <!-- DSA & Algorithms -->
+                    <div class="bento-card">
+                        <div class="bento-icon"><i class="ph ph-graph"></i></div>
+                        <h3>DSA & Problem Solving</h3>
+                        <p>Applying core computer science concepts to optimize complex systems.</p>
+                        <ul class="skill-list">
+                            <li><i class="ph-fill ph-check-circle icon-purple"></i> Java & Object-Oriented Prog.</li>
+                            <li><i class="ph-fill ph-check-circle icon-purple"></i> Graphs, Tries & Segment Trees</li>
+                            <li><i class="ph-fill ph-check-circle icon-purple"></i> Dynamic Programming (DP)</li>
+                            <li><i class="ph-fill ph-check-circle icon-purple"></i> Advanced Greedy Algorithms</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Selected Work Section -->
-        <section id="work" class="py-20 px-6 border-t border-white/10 bg-gray-900/20">
-            <div class="max-w-6xl mx-auto">
-                <div class="mb-12">
-                    <h2 class="text-3xl font-bold text-white tracking-tight mb-4">Selected Work</h2>
-                    <p class="text-gray-400">A showcase of production-ready applications and technical problem-solving.</p>
+        <section id="work" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Selected Work.</h2>
+                    <p class="section-subtitle">A showcase of production-ready applications, highlighting complex technical problem-solving.</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Project Card 1 -->
-                    <div class="group relative bg-white/5 border border-white/10 rounded-3xl p-8 hover:bg-white/10 hover:border-white/20 transition-all duration-300 hover:-translate-y-1">
-                        <div class="flex justify-between items-start mb-12">
-                            <div class="p-3 bg-white/10 rounded-xl text-white">
-                                <i class="ph ph-kanban text-2xl"></i>
-                            </div>
-                            <a href="#" class="text-gray-400 group-hover:text-white transition-colors">
-                                <i class="ph ph-arrow-up-right text-xl"></i>
-                            </a>
+                <div class="work-grid">
+                    <!-- Project 1 -->
+                    <div class="work-card">
+                        <div class="work-header">
+                            <i class="ph ph-kanban"></i>
+                            <a href="#" class="work-link"><i class="ph ph-arrow-up-right"></i></a>
                         </div>
-                        <h3 class="text-xl font-semibold text-white mb-2">Enterprise SaaS Platform</h3>
-                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
-                            Architected and deployed a multi-tenant dashboard system handling thousands of daily active users with sub-second load times.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 text-xs font-medium bg-black/50 border border-white/10 rounded-full text-gray-300">React</span>
-                            <span class="px-3 py-1 text-xs font-medium bg-black/50 border border-white/10 rounded-full text-gray-300">Next.js</span>
-                            <span class="px-3 py-1 text-xs font-medium bg-black/50 border border-white/10 rounded-full text-gray-300">Tailwind</span>
+                        <h3>Enterprise SaaS Platform</h3>
+                        <p>Architected and deployed a multi-tenant dashboard system handling complex relational data with sub-second API response times.</p>
+                        <div class="tech-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MongoDB</span>
                         </div>
                     </div>
 
-                    <!-- Project Card 2 -->
-                    <div class="group relative bg-white/5 border border-white/10 rounded-3xl p-8 hover:bg-white/10 hover:border-white/20 transition-all duration-300 hover:-translate-y-1">
-                        <div class="flex justify-between items-start mb-12">
-                            <div class="p-3 bg-white/10 rounded-xl text-white">
-                                <i class="ph ph-shopping-cart text-2xl"></i>
-                            </div>
-                            <a href="#" class="text-gray-400 group-hover:text-white transition-colors">
-                                <i class="ph ph-arrow-up-right text-xl"></i>
-                            </a>
+                    <!-- Project 2 -->
+                    <div class="work-card">
+                        <div class="work-header">
+                            <i class="ph ph-shopping-cart"></i>
+                            <a href="#" class="work-link"><i class="ph ph-arrow-up-right"></i></a>
                         </div>
-                        <h3 class="text-xl font-semibold text-white mb-2">High-Conversion E-commerce</h3>
-                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
-                            Engineered a headless storefront with seamless cart synchronization, dynamic rendering, and a flawless mobile-first checkout flow.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 text-xs font-medium bg-black/50 border border-white/10 rounded-full text-gray-300">TypeScript</span>
-                            <span class="px-3 py-1 text-xs font-medium bg-black/50 border border-white/10 rounded-full text-gray-300">Stripe API</span>
-                            <span class="px-3 py-1 text-xs font-medium bg-black/50 border border-white/10 rounded-full text-gray-300">PostgreSQL</span>
+                        <h3>High-Conversion E-commerce</h3>
+                        <p>Engineered a robust digital storefront with seamless state management, dynamic rendering, and a flawless mobile checkout flow.</p>
+                        <div class="tech-tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Express</span>
+                            <span class="tag">SQL</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Expertise Section -->
-        <section id="expertise" class="py-24 px-6">
-            <div class="max-w-6xl mx-auto">
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                    <div class="lg:col-span-1">
-                        <h2 class="text-3xl font-bold text-white tracking-tight mb-4">Technical Arsenal</h2>
-                        <p class="text-gray-400 leading-relaxed">
-                            I focus on modern, scalable technologies. By utilizing the right tools for the job, I ensure rapid development without compromising on maintainability or performance.
-                        </p>
+        <!-- Contact Section -->
+        <section id="contact" class="section" style="border-bottom: none;">
+            <div class="container contact-wrapper">
+                
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <div class="availability-badge" style="margin-bottom: 24px;">
+                        <span class="status-dot"></span> Available for Hire
+                    </div>
+                    <h2>Let's build something exceptional.</h2>
+                    <p>Whether you have a clear vision or need technical guidance to figure out the next steps, I'm here to help translate your goals into reality.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="ph ph-envelope-simple"></i></div>
+                            <div>
+                                <h4>Email me directly</h4>
+                                <a href="mailto:hello@basantkoiri.com.np"><span>hello@basantkoiri.com.np</span></a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="ph ph-map-pin"></i></div>
+                            <div>
+                                <h4>Based in</h4>
+                                <span>Khairahani, Bagmati Province, Nepal<br>Available for remote work worldwide</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="form-row">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Jane Doe" required>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="jane@company.com" required>
+                        </div>
                     </div>
                     
-                    <div class="lg:col-span-2 grid grid-cols-2 md:grid-cols-3 gap-4">
-                        <!-- Tech Items -->
-                        <div class="p-4 border border-white/10 rounded-2xl flex items-center gap-3 bg-white/[0.02]">
-                            <i class="ph ph-file-ts text-xl text-white"></i>
-                            <span class="font-medium">TypeScript</span>
-                        </div>
-                        <div class="p-4 border border-white/10 rounded-2xl flex items-center gap-3 bg-white/[0.02]">
-                            <i class="ph ph-atom text-xl text-white"></i>
-                            <span class="font-medium">React / Next.js</span>
-                        </div>
-                        <div class="p-4 border border-white/10 rounded-2xl flex items-center gap-3 bg-white/[0.02]">
-                            <i class="ph ph-paint-brush-broad text-xl text-white"></i>
-                            <span class="font-medium">Tailwind CSS</span>
-                        </div>
-                        <div class="p-4 border border-white/10 rounded-2xl flex items-center gap-3 bg-white/[0.02]">
-                            <i class="ph ph-database text-xl text-white"></i>
-                            <span class="font-medium">Node.js</span>
-                        </div>
-                        <div class="p-4 border border-white/10 rounded-2xl flex items-center gap-3 bg-white/[0.02]">
-                            <i class="ph ph-git-branch text-xl text-white"></i>
-                            <span class="font-medium">Git / CI/CD</span>
-                        </div>
-                        <div class="p-4 border border-white/10 rounded-2xl flex items-center gap-3 bg-white/[0.02]">
-                            <i class="ph ph-figma-logo text-xl text-white"></i>
-                            <span class="font-medium">Figma</span>
-                        </div>
+                    <div class="form-group">
+                        <label for="subject">What are you looking for?</label>
+                        <select id="subject" name="subject" class="form-control" style="appearance: none;">
+                            <option value="new_project" style="background: #111;">New Web Application</option>
+                            <option value="contract" style="background: #111;">Freelance / Contract Work</option>
+                            <option value="consulting" style="background: #111;">Technical Consulting</option>
+                        </select>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- CTA Section -->
-        <section id="contact" class="py-32 px-6 border-t border-white/10 bg-gradient-to-b from-transparent to-white/[0.02]">
-            <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-4xl md:text-5xl font-bold text-white tracking-tight mb-6">Let's build something exceptional.</h2>
-                <p class="text-xl text-gray-400 mb-10">
-                    Currently accepting new freelance projects and full-time opportunities. Let's discuss how I can help bring your vision to life.
-                </p>
-                <a href="contact.html" class="inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-all hover:scale-105 active:scale-95 shadow-[0_0_40px_rgba(255,255,255,0.3)]">
-                    <i class="ph ph-envelope-simple text-xl"></i>
-                    Get in touch
-                </a>
+                    <div class="form-group">
+                        <label for="message">Project Details</label>
+                        <textarea id="message" name="message" class="form-control" rows="5" placeholder="Tell me a bit about your timeline and goals..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        Send Message <i class="ph-bold ph-paper-plane-tilt"></i>
+                    </button>
+                </form>
+
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-white/10 py-10 px-6">
-        <!-- Updated -->
-        <div class="flex items-center gap-6 text-gray-500">
-            <a href="https://github.com/basantkoiri" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors" aria-label="GitHub">
-                <i class="ph ph-github-logo text-xl"></i>
-            </a>
-            <a href="https://np.linkedin.com/in/basant-koiri" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors" aria-label="LinkedIn">
-                <i class="ph ph-linkedin-logo text-xl"></i>
-            </a>
-            <a href="https://facebook.com/your-profile-here" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors" aria-label="Facebook">
-                <i class="ph ph-facebook-logo text-xl"></i>
-            </a>
+    <footer class="container">
+        <div class="footer" style="border-top: 1px solid var(--border-glass);">
+            <div>
+                &copy; <script>document.write(new Date().getFullYear())</script> Basant Koiri. All rights reserved.
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/basantkoiri" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="ph ph-github-logo"></i></a>
+                <a href="https://np.linkedin.com/in/basant-koiri" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
+                <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="ph ph-facebook-logo"></i></a>
+            </div>
         </div>
     </footer>
 
