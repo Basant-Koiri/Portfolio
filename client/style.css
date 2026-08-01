@@ -45,7 +45,8 @@ html {
     scroll-padding-top: 100px; /* Accounts for the sticky nav + breathing room */
     
     /* Scrollbar for Firefox */
-    scrollbar-width: thin;
+    scrollbar-width: normal;
+    scroll-behavior: smooth;
     scrollbar-color: rgba(255, 255, 255, 0.15) var(--bg-base);
 }
 
@@ -67,11 +68,6 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.3); /* Brightens smoothly on hover */
-}
-
-html {
-    scroll-behavior: smooth;
-    background-color: var(--bg-base);
 }
 
 body {
