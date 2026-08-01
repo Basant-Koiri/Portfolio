@@ -40,6 +40,11 @@
 
 /* Firefox Support */
 html {
+    scroll-behavior: smooth;
+    background-color: var(--bg-base);
+    scroll-padding-top: 100px; /* Accounts for the sticky nav + breathing room */
+    
+    /* Scrollbar for Firefox */
     scrollbar-width: thin;
     scrollbar-color: rgba(255, 255, 255, 0.15) var(--bg-base);
 }
