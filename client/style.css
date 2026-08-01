@@ -34,6 +34,36 @@
     box-sizing: border-box;
 }
 
+/* =========================================
+   Custom Scrollbar (SaaS Aesthetic)
+   ========================================= */
+
+/* Firefox Support */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.15) var(--bg-base);
+}
+
+/* Chrome, Edge, and Safari Support */
+::-webkit-scrollbar {
+    width: 10px; /* Slimmer than the default 16px */
+    height: 10px; /* For horizontal scrolling if needed */
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-base); /* Syncs perfectly with the pure black background */
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15); /* Subtle glassmorphic thumb */
+    border-radius: 99px; /* Pill-shaped */
+    border: 3px solid var(--bg-base); /* Creates a faux-padding effect so the thumb doesn't touch the edges */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3); /* Brightens smoothly on hover */
+}
+
 html {
     scroll-behavior: smooth;
     background-color: var(--bg-base);
